@@ -4,9 +4,17 @@ const router = express.Router();
 
 module.exports = (params) => {
   router.get('/', (req, res) => {
-    const queryString = `SELECT * FROM "submission"
-    JOIN "status" ON "submission"."status"="status"."id"
-    WHERE "team_id"=$1;`;
+    const queryString = `SELECT
+      "submission"."challenge_id",
+      "submission"."image_url",
+      "status"."status_name",
+      "user"."username",
+      "challenge"."description"
+      FROM "submission"
+      JOIN "status" ON "submission"."status"="status"."id"
+      JOIN "user" ON "submission"."user"="user"."id"
+      JOIN "challenge" ON "submission"."challenge_id"="challenge"."id"
+      WHERE "team_id"=$1;`;
 
     pool
       .query(queryString, [req.user.team])
@@ -14,6 +22,7 @@ module.exports = (params) => {
         res.send(response.rows);
       })
       .catch((err) => {
+        console.warn(`Error in get: ${err}`);
         res.sendStatus(500);
       });
   });

@@ -10,7 +10,7 @@ function* getChallenges() {
 
     yield put({ type: 'SET_CHALLENGES', payload: response.data });
   } catch (error) {
-    console.log('Challenges get request failed', error);
+    console.warn(`Challenges get request failed ${error}`);
   }
 }
 

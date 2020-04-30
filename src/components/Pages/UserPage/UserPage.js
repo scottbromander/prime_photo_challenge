@@ -4,6 +4,7 @@ import LogOutButton from '../../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ImageUploadModal from '../../Modals/ImageUploadModal/ImageUploadModal';
 import toastr from 'toastr';
+import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
 
 toastr.options = {
   closeButton: true,
@@ -21,7 +22,6 @@ class UserPage extends Component {
   }
 
   toggleModal = (trigger, challenge) => (event) => {
-    console.log('meow');
     if (trigger) {
       this.setState({
         showModal: true,
@@ -59,7 +59,6 @@ class UserPage extends Component {
 
         for (let challenge of this.props.store.teamChallengesReducer) {
           if (challenge.challenge_id === item.id) {
-            console.log(challenge.status_name);
             switch (challenge['status_name']) {
               case 'pending':
                 button = (
@@ -67,6 +66,9 @@ class UserPage extends Component {
                     Submitted
                   </button>
                 );
+                break;
+              case 'approved':
+                button = <button className="btn btn-success">Accepted!</button>;
                 break;
               case 'declined':
                 button = <button className="btn btn-danger">Rejected</button>;
@@ -112,6 +114,9 @@ class UserPage extends Component {
             closeModal={this.closeModal}
             challenge={this.state.currentChallenge}
           />
+          {/* <SubmittedImageModal
+            submission={this.state}
+          /> */}
         </div>
       </div>
     );

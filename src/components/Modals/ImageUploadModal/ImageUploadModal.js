@@ -28,7 +28,6 @@ class ImageUploadModal extends Component {
   };
 
   submitImage = (event) => {
-    console.log(this.props.challenge);
     this.props.dispatch({
       type: 'POST_PHOTO',
       payload: {
@@ -38,12 +37,11 @@ class ImageUploadModal extends Component {
         challenge_id: this.props.challenge.id,
       },
     });
-    console.log(this.props.toggleModal);
+
     this.props.closeModal();
   };
 
   render() {
-    console.log(this.props);
     return (
       <Modal
         show={this.props.show}

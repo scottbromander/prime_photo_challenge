@@ -1,0 +1,8 @@
+module.exports = {
+  STATUS_PENDING_CODE: 1,
+  STATUS_ACCEPTED_CODE: 2,
+  STATUS_DECLINED_CODE: 3,
+  STATUS_PENDING: 'pending',
+  STATUS_ACCEPTED: 'accepted',
+  STATUS_DECLINED: 'declined',
+};
