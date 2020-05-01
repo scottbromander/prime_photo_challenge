@@ -24,11 +24,14 @@ import RegisterPage from '../Pages/RegisterPage/RegisterPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'toastr/build/toastr.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import AdminPage from '../Pages/AdminPage/AdminPage';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+
+import './App.css';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
-    this.props.dispatch({ type: 'FETCH_PENDING_SUBMISSIONS' });
   }
 
   render() {
@@ -54,6 +57,9 @@ class App extends Component {
               <ProtectedRoute exact path="/upload" component={UploadPage} />
               {/* This works the same as the other protected route, except that if the user is logged in,
             they will be redirected to the authRedirect path provided. */}
+              {this.props.user.role === 'admin' && (
+                <ProtectedRoute exact path="/admin" component={AdminPage} />
+              )}
               <ProtectedRoute
                 exact
                 path="/login"
@@ -78,4 +84,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default connect(mapStoreToProps)(App);

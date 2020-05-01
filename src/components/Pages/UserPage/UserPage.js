@@ -81,7 +81,7 @@ class UserPage extends Component {
         return (
           <tr key={index}>
             <td>
-              <p className="h4">{item.description}</p>
+              <p className="h5">{item.description}</p>
             </td>
             <td>{button}</td>
           </tr>

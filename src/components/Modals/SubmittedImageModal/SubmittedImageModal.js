@@ -5,36 +5,42 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 class SubmittedImageModal extends Component {
+  approveImage = (event) => {
+    console.log('Approve Image: ', this.props.item);
+    this.props.dispatch({
+      type: 'APPROVE_SUBMISSION',
+      payload: this.props.item,
+    });
+    this.props.closeModal();
+  };
+
   render() {
     return (
       <Modal
         show={this.props.show}
-        onHide={this.props.toggleModal(false)}
         size="lg"
+        onHide={this.props.closeModal}
         centered
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            <h2>SUBMITTED IMAGE:</h2>
-            {this.props.challenge && <p>{this.props.submission.description}</p>}
+            {this.props.item && <p>{this.props.item.description}</p>}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div style={{ width: '250px', margin: '0 auto' }}>
-            <img
-              src={this.props.submission.imgUrl}
-              alt={'Image of ' + this.props.submission.description}
-              style={{ width: '250px' }}
-            />
+          <div style={{ width: '100%', margin: '0 auto' }}>
+            {this.props.item && (
+              <img
+                src={this.props.item.image_url}
+                alt={'Image of ' + this.props.item.description}
+                style={{ width: '100%' }}
+              />
+            )}
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="primary"
-            disabled={!this.state.btnEnabled}
-            onClick={this.submitImage}
-          >
-            Save Changes
+          <Button variant="primary" onClick={this.approveImage}>
+            Approve
           </Button>
         </Modal.Footer>
       </Modal>
