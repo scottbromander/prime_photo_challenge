@@ -64,7 +64,7 @@ class ImageUploadModal extends Component {
             disabled={!this.state.btnEnabled}
             onClick={this.submitImage}
           >
-            Save Changes
+            Save
           </Button>
         </Modal.Footer>
       </Modal>

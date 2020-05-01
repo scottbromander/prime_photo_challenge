@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Card } from 'react-bootstrap';
 import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
+import submissionSaga from '../../../redux/sagas/submission.saga';
 
 const smallTextStyle = {
   fontSize: '12px',
@@ -63,6 +64,11 @@ class AdminPage extends Component {
     return (
       <div>
         <p>ADMIN PAGE</p>
+        {submissionArray.length === 0 && (
+          <div style={{ textAlign: 'center' }}>
+            <h1>All caught up!</h1>
+          </div>
+        )}
         <div>{submissionArray}</div>
         <SubmittedImageModal
           show={this.state.show}

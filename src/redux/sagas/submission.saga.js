@@ -30,9 +30,24 @@ function* approveSubmission(action) {
   }
 }
 
+function* declineSubmission(action) {
+  try {
+    yield axios.put(
+      `api/submissions/decline/${action.payload.id}`,
+      action.payload
+    );
+
+    yield put({ type: 'FETCH_PENDING_SUBMISSIONS' });
+  } catch (error) {
+    console.error(`Error with user registration: ${error}`);
+    yield put({ type: 'REGISTRATION_FAILED' });
+  }
+}
+
 function* submissionSaga() {
   yield takeLatest('FETCH_PENDING_SUBMISSIONS', fetchPendingSubmissions);
   yield takeLatest('APPROVE_SUBMISSION', approveSubmission);
+  yield takeLatest('DECLINE_SUBMISSION', declineSubmission);
 }
 
 export default submissionSaga;
