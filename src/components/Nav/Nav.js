@@ -12,31 +12,45 @@ const Nav = (props) => {
   };
 
   if (props.store.user.id != null) {
-    loginLinkData.path = '/admin';
+    loginLinkData.path = '/user';
     loginLinkData.text = 'Home';
   }
 
   return (
-    <div className="nav">
-      <Link to="/home">
+    <div>
+      <div
+        style={{
+          margin: '0 auto',
+          backgroundColor: '#131313',
+          textAlign: 'center',
+        }}
+      >
         <h2 className="nav-title">
-          <i class="fas fa-camera-retro"></i> Prime Photo Challenge
+          <i class="fas fa-camera-retro"></i> PRIME PHOTO CHALLENGE
         </h2>
-      </Link>
-      <div className="nav-right">
-        <Link className="nav-link" to={loginLinkData.path}>
-          {loginLinkData.text}
-        </Link>
-        {props.store.user.id && (
-          <>
-            <Link className="nav-link" to="/upload">
-              Upload Page
-            </Link>
-          </>
-        )}
-        <Link className="nav-link" to="/about">
-          About
-        </Link>
+      </div>
+      <div className="nav">
+        <div className="nav-center">
+          <Link className="nav-link" to={loginLinkData.path}>
+            {loginLinkData.text}
+          </Link>
+          {props.store.user.role === 'admin' && (
+            <>
+              <Link className="nav-link" to="/admin">
+                Admin Page
+              </Link>
+            </>
+          )}
+          <Link className="nav-link" to="/about">
+            About
+          </Link>
+          <Link
+            className="nav-link"
+            onClick={() => props.dispatch({ type: 'LOGOUT' })}
+          >
+            Log Out
+          </Link>
+        </div>
       </div>
     </div>
   );
