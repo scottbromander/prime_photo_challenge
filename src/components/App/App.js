@@ -25,6 +25,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import AdminPage from '../Pages/AdminPage/AdminPage';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+import './bootstrap.min.css';
 import './App.css';
 
 class App extends Component {
