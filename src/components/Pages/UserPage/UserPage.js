@@ -72,6 +72,8 @@ class UserPage extends Component {
               case 'declined':
                 button = <button className="btn btn-danger">Rejected</button>;
                 break;
+              default:
+                break;
             }
           }
           continue;

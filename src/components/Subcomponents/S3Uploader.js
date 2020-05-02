@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
-import { Spinner } from 'react-bootstrap';
 
 const dropZoneStyle = {
   margin: '0 auto',
@@ -50,11 +49,7 @@ export default class S3Uploader extends Component {
           </div>
         ) : (
           <div style={{ width: '250px', margin: '0 auto' }}>
-            <img
-              src={this.state.imgUrl}
-              alt="User submitted photo"
-              style={{ width: '250px' }}
-            />
+            <img src={this.state.imgUrl} style={{ width: '250px' }} />
           </div>
         )}
       </div>

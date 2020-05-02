@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* postPhoto(action) {
   try {
-    const response = yield axios.post('api/photo', action.payload);
+    yield axios.post('api/photo', action.payload);
     yield put({ type: 'GET_PHOTO' });
   } catch (error) {
     console.error('User get request failed', error);
