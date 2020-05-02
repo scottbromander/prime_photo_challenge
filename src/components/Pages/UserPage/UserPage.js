@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ImageUploadModal from '../../Modals/ImageUploadModal/ImageUploadModal';
 import toastr from 'toastr';
-import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
+import CreateTeam from '../../Subcomponents/CreateTeam';
 
 toastr.options = {
   closeButton: true,
@@ -81,7 +80,7 @@ class UserPage extends Component {
         return (
           <tr key={index}>
             <td>
-              <p className="h4">{item.description}</p>
+              <p className="h5">{item.description}</p>
             </td>
             <td>{button}</td>
           </tr>
@@ -96,7 +95,7 @@ class UserPage extends Component {
     return (
       <div>
         <h1 id="welcome">Welcome, {name}!</h1>
-        <p>Your ID is: {this.props.store.user.id}</p>
+        {!this.props.user.team && <CreateTeam />}
 
         <div className="card">
           <table className="table table-striped ">

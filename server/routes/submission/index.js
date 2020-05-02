@@ -2,7 +2,11 @@ const express = require('express');
 const pool = require('../../modules/pool');
 const router = express.Router();
 
-const { STATUS_PENDING_CODE } = require('../../modules/enums_status');
+const {
+  STATUS_PENDING_CODE,
+  STATUS_ACCEPTED_CODE,
+  STATUS_DECLINED_CODE,
+} = require('../../modules/enums_status');
 
 module.exports = (params) => {
   router.get('/pending', (req, res) => {
@@ -27,7 +31,35 @@ module.exports = (params) => {
       });
   });
 
-  router.put('/:id', (req, res) => {});
+  router.put('/approve/:id', (req, res) => {
+    //UPDATE "songs" SET "rank" = 1 WHERE "track" = 'Wonderwall';
+    const queryString = `UPDATE "submission" SET "status"=$1 WHERE "id"=$2;`;
+
+    pool
+      .query(queryString, [STATUS_ACCEPTED_CODE, req.params.id])
+      .then((response) => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.warn(`Error accepting submission: ${err}`);
+        res.sensStatus(500);
+      });
+  });
+
+  router.put('/decline/:id', (req, res) => {
+    //UPDATE "songs" SET "rank" = 1 WHERE "track" = 'Wonderwall';
+    const queryString = `UPDATE "submission" SET "status"=$1 WHERE "id"=$2;`;
+
+    pool
+      .query(queryString, [STATUS_DECLINED_CODE, req.params.id])
+      .then((response) => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.warn(`Error declining submission: ${err}`);
+        res.sensStatus(500);
+      });
+  });
 
   return router;
 };
