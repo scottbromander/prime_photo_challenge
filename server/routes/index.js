@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const userRouter = require('./user/user.router');
+const userRouter = require('./user');
 const photoRouter = require('./photo');
 const challengeRouter = require('./challenge');
 const submissionRouter = require('./submission');
