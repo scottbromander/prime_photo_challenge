@@ -86,7 +86,9 @@ class UserPage extends Component {
         return (
           <tr key={index}>
             <td>
-              <p className="lead">{item.description}</p>
+              <p className="lead" style={{ marginBottom: '0px' }}>
+                {item.description}
+              </p>
             </td>
             <td>{button}</td>
           </tr>
