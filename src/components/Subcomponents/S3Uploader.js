@@ -37,7 +37,6 @@ export default class S3Uploader extends Component {
       <div>
         {!this.state.imgUrl ? (
           <div>
-            {' '}
             <p style={{ textAlign: 'center' }}>CLICK OF DRAG IMAGE HERE</p>
             <DropzoneS3Uploader
               onFinish={this.handleFinishedUpload}
