@@ -49,7 +49,7 @@ class UserPage extends Component {
       (item, index) => {
         let button = (
           <button
-            className="btn btn-primary"
+            className="btn btn-primary btn-sm"
             onClick={this.toggleModal(true, item)}
           >
             Submit
@@ -61,16 +61,20 @@ class UserPage extends Component {
             switch (challenge['status_name']) {
               case 'pending':
                 button = (
-                  <button className="btn btn-warning" disabled>
+                  <button className="btn btn-warning btn-sm" disabled>
                     Submitted
                   </button>
                 );
                 break;
               case 'approved':
-                button = <button className="btn btn-success">Accepted!</button>;
+                button = (
+                  <button className="btn btn-success btn-sm">Accepted!</button>
+                );
                 break;
               case 'declined':
-                button = <button className="btn btn-danger">Rejected</button>;
+                button = (
+                  <button className="btn btn-danger btn-sm">Rejected</button>
+                );
                 break;
               default:
                 break;
