@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const userRouter = require('./user');
-const photoRouter = require('./photo');
-const challengeRouter = require('./challenge');
-const submissionRouter = require('./submission');
+const userRouter = require('./user/index');
+const photoRouter = require('./photo/index');
+const challengeRouter = require('./challenge/index');
+const submissionRouter = require('./submission/index');
 
 module.exports = (param) => {
   router.use('/user', userRouter());
