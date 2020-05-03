@@ -18,7 +18,7 @@ class LandingPage extends Component {
       <div className="container">
         <div className="grid">
           <div className="grid-col grid-col_12" style={{ textAlign: 'center' }}>
-            <h3>Already a Member?</h3>
+            <h3>Login to continue</h3>
             <button className="btn btn_sizeFull" onClick={this.onLogin}>
               Login
             </button>
