@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import { Card } from 'react-bootstrap';
 import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
-import submissionSaga from '../../../redux/sagas/submission.saga';
 
 const smallTextStyle = {
   fontSize: '12px',
@@ -53,6 +52,7 @@ class AdminPage extends Component {
                   width: '250px',
                 }}
                 src={item.image_url}
+                alt={item.description}
               />
               <p style={smallTextStyle}>{item.description}</p>
             </Card>

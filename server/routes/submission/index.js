@@ -10,7 +10,8 @@ const {
 
 module.exports = (params) => {
   router.get('/pending', (req, res) => {
-    const queryString = `SELECT 
+    console.log('in submission router');
+    const queryString = `SELECT
         "submission"."id",
         "submission"."image_url",
         "status"."status_name",

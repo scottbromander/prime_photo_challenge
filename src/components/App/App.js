@@ -20,13 +20,12 @@ import LandingPage from '../Pages/LandingPage/LandingPage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
 
-// import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'toastr/build/toastr.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import AdminPage from '../Pages/AdminPage/AdminPage';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+import './bootstrap.min.css';
 import './App.css';
 
 class App extends Component {
