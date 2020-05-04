@@ -7,6 +7,7 @@ import {
   submissionReducer,
   allApprovedSubmissionReducer,
 } from './submission.reducer';
+import { leaderboardReducer } from './leaderboard.reducer';
 
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   teamChallengesReducer,
   submissionReducer,
   allApprovedSubmissionReducer,
+  leaderboardReducer,
 });
 
 export default rootReducer;

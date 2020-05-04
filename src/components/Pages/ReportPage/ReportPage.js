@@ -6,9 +6,24 @@ import MasonryGallery from '../../Subcomponents/ImageGallery';
 class ReportPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ALL_APPROVED_SUBMISSIONS' });
+    this.props.dispatch({ type: 'FETCH_LEADERBOARD' });
   }
 
   render() {
+    const leaderboardArray = this.props.store.leaderboardReducer.map(
+      (item, index) => {
+        return (
+          <tr key={index}>
+            <th scope="row">{item.team_id}</th>
+            <td className="lead">{item.name}</td>
+            <td className="lead" style={{ textAlign: 'center' }}>
+              {item.score}
+            </td>
+          </tr>
+        );
+      }
+    );
+
     return (
       <div>
         <div>
@@ -24,28 +39,7 @@ class ReportPage extends Component {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Awesomeness</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Whatever</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>SQUIRREL!</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Go, Fight, Win</td>
-                <td>12</td>
-              </tr>
-            </tbody>
+            <tbody>{leaderboardArray}</tbody>
           </table>
 
           <MasonryGallery
