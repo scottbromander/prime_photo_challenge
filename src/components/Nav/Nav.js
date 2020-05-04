@@ -25,32 +25,34 @@ const Nav = (props) => {
         }}
       >
         <h2 className="nav-title">
-          <i class="fas fa-camera-retro"></i> PRIME PHOTO CHALLENGE
+          <i className="fas fa-camera-retro"></i> PRIME PHOTO CHALLENGE
         </h2>
       </div>
-      <div className="nav">
-        <div className="nav-center">
-          <Link className="nav-link" to={loginLinkData.path}>
-            {loginLinkData.text}
-          </Link>
-          {props.store.user.role === 'admin' && (
-            <>
-              <Link className="nav-link" to="/admin">
-                Admin Page
-              </Link>
-            </>
-          )}
-          <Link className="nav-link" to="/about">
-            About
-          </Link>
-          <Link
-            className="nav-link"
-            onClick={() => props.dispatch({ type: 'LOGOUT' })}
-          >
-            Log Out
-          </Link>
+      {props.user && props.user.id && (
+        <div className="nav">
+          <div className="nav-center">
+            <Link className="nav-link" to={loginLinkData.path}>
+              {loginLinkData.text}
+            </Link>
+            {props.store.user.role === 'admin' && (
+              <>
+                <Link className="nav-link" to="/admin">
+                  Admin Page
+                </Link>
+              </>
+            )}
+            <Link className="nav-link" to="/report">
+              Report
+            </Link>
+            <Link
+              className="nav-link"
+              onClick={() => props.dispatch({ type: 'LOGOUT' })}
+            >
+              Log Out
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

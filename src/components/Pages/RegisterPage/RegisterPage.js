@@ -38,7 +38,11 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form className="formPanel" onSubmit={this.registerUser}>
+        <form
+          className="form-group"
+          onSubmit={this.registerUser}
+          style={{ textAlign: 'center' }}
+        >
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
@@ -48,6 +52,7 @@ class RegisterPage extends Component {
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+                className="form-control"
               />
             </label>
           </div>
@@ -59,6 +64,7 @@ class RegisterPage extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+                className="form-control"
               />
             </label>
           </div>
@@ -68,6 +74,7 @@ class RegisterPage extends Component {
               type="submit"
               name="submit"
               value="Register"
+              className="btn btn-primary"
             />
           </div>
         </form>

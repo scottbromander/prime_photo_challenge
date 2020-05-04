@@ -38,7 +38,11 @@ class LoginPage extends Component {
             {this.props.store.errors.loginMessage}
           </h2>
         )}
-        <form className="formPanel" onSubmit={this.login}>
+        <form
+          className="form-group"
+          onSubmit={this.login}
+          style={{ textAlign: 'center' }}
+        >
           <h1>Login</h1>
           <div>
             <label htmlFor="username">
@@ -48,6 +52,7 @@ class LoginPage extends Component {
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+                className="form-control"
               />
             </label>
           </div>
@@ -59,6 +64,7 @@ class LoginPage extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+                className="form-control"
               />
             </label>
           </div>
@@ -68,6 +74,7 @@ class LoginPage extends Component {
               type="submit"
               name="submit"
               value="Log In"
+              className="btn btn-primary"
             />
           </div>
         </form>
