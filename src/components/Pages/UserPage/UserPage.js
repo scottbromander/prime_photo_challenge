@@ -163,7 +163,9 @@ class UserPage extends Component {
                 <thead className="thead-dark">
                   <tr>
                     <th scope="col">Challenge</th>
-                    <th scope="col">Submit</th>
+                    <th scope="col" style={{ textAlign: 'center' }}>
+                      Submit
+                    </th>
                   </tr>
                 </thead>
                 <tbody>{challengeArray}</tbody>

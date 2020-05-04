@@ -28,6 +28,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import './bootstrap.min.css';
 import './toastr.min.css';
 import './App.css';
+import ReportPage from '../Pages/ReportPage/ReportPage';
 
 class App extends Component {
   componentDidMount() {
@@ -45,7 +46,7 @@ class App extends Component {
               <Redirect exact from="/" to="/home" />
               {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-              <Route exact path="/about" component={AboutPage} />
+
               <Route exact path="/home" component={LandingPage} />
               {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -72,7 +73,7 @@ class App extends Component {
                 authRedirect="/user"
                 component={RegisterPage}
               />
-
+              <ProtectedRoute exact path="/report" component={ReportPage} />
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
             </Switch>
