@@ -10,7 +10,6 @@ const {
 
 module.exports = (params) => {
   router.get('/pending', (req, res) => {
-    console.log('in submission router');
     const queryString = `SELECT
         "submission"."id",
         "submission"."image_url",
@@ -32,8 +31,21 @@ module.exports = (params) => {
       });
   });
 
+  router.get('/approved/all', (req, res) => {
+    const queryString = `SELECT * FROM "submission" WHERE "submission"."status"=$1;`;
+
+    pool
+      .query(queryString, [STATUS_ACCEPTED_CODE])
+      .then((response) => {
+        res.send(response.rows);
+      })
+      .catch((err) => {
+        console.warn(err);
+        res.sendStatus(500);
+      });
+  });
+
   router.put('/approve/:id', (req, res) => {
-    //UPDATE "songs" SET "rank" = 1 WHERE "track" = 'Wonderwall';
     const queryString = `UPDATE "submission" SET "status"=$1 WHERE "id"=$2;`;
 
     pool
