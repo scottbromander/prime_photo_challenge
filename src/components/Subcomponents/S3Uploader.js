@@ -34,8 +34,6 @@ export default class S3Uploader extends Component {
           : 'http://localhost:5000',
     };
 
-    console.log(uploadOptions, process.env.NODE_ENV);
-
     const s3Url = 'https://primephotochallenge.s3.amazonaws.com';
 
     return (
