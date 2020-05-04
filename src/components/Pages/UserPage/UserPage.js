@@ -136,17 +136,18 @@ class UserPage extends Component {
         </div>
       );
       showStarter = true;
-    } else if (this.props.store.teamChallengesReducer.length === 0) {
-      starterUser = (
-        <div>
-          <div style={{ margin: '0 auto', textAlign: 'center' }}>
-            <div className="spinner-border text-dark"></div>
-            <h6>Loading</h6>
-          </div>
-        </div>
-      );
-      showStarter = true;
     }
+    // else if (this.props.store.teamChallengesReducer.length === 0) {
+    //   starterUser = (
+    //     <div>
+    //       <div style={{ margin: '0 auto', textAlign: 'center' }}>
+    //         <div className="spinner-border text-dark"></div>
+    //         <h6>Loading</h6>
+    //       </div>
+    //     </div>
+    //   );
+    //   showStarter = true;
+    // }
 
     return (
       <div>
