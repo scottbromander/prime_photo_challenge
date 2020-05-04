@@ -29,10 +29,12 @@ export default class S3Uploader extends Component {
   render() {
     const uploadOptions = {
       server:
-        process.env.NODE_ENV === 'development'
+        process.env.NODE_ENV !== 'development'
           ? 'https://sleepy-shore-18289.herokuapp.com'
           : 'http://localhost:5000',
     };
+
+    console.log(uploadOptions, process.env.NODE_ENV);
 
     const s3Url = 'https://primephotochallenge.s3.amazonaws.com';
 

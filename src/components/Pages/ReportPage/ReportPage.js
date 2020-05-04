@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+import MasonryGallery from '../../Subcomponents/ImageGallery';
 
 class ReportPage extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_ALL_APPROVED_SUBMISSIONS' });
+  }
+
   render() {
     return (
       <div>
@@ -47,6 +47,10 @@ class ReportPage extends Component {
               </tr>
             </tbody>
           </table>
+
+          <MasonryGallery
+            elements={this.props.store.allApprovedSubmissionReducer}
+          />
         </div>
       </div>
     );

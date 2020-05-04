@@ -3,7 +3,10 @@ import errors from './errors.reducer';
 import loginMode from './loginMode.reducer';
 import user from './user.reducer';
 import { challengesReducer, teamChallengesReducer } from './challenges.reducer';
-import submissionReducer from './submission.reducer';
+import {
+  submissionReducer,
+  allApprovedSubmissionReducer,
+} from './submission.reducer';
 
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
@@ -12,6 +15,7 @@ const rootReducer = combineReducers({
   challengesReducer,
   teamChallengesReducer,
   submissionReducer,
+  allApprovedSubmissionReducer,
 });
 
 export default rootReducer;
