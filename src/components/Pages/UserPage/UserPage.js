@@ -5,6 +5,7 @@ import ImageUploadModal from '../../Modals/ImageUploadModal/ImageUploadModal';
 import toastr from 'toastr';
 import CreateTeam from '../../Subcomponents/CreateTeam';
 import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
+import PendingModal from '../../Modals/PendingModal/PendingModal';
 
 toastr.options = {
   closeButton: true,
@@ -14,6 +15,7 @@ toastr.options = {
 class UserPage extends Component {
   state = {
     showModal: false,
+    showSubmittedModal: false,
   };
 
   componentDidMount() {
@@ -40,9 +42,23 @@ class UserPage extends Component {
         showModal: false,
       },
       () => {
+        // TODO: NEED TO OFFLOAD THIS TO A 201
         toastr.success('GOT IT!');
       }
     );
+  };
+
+  showSubmitModal = (challenge) => (event) => {
+    this.setState({
+      showSubmittedModal: true,
+      currentChallenge: challenge,
+    });
+  };
+
+  closeSubmittedModal = (event) => {
+    this.setState({
+      showSubmittedModal: false,
+    });
   };
 
   render() {
@@ -62,7 +78,10 @@ class UserPage extends Component {
             switch (challenge['status_name']) {
               case 'pending':
                 button = (
-                  <button className="btn btn-warning btn-sm" disabled>
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={this.showSubmitModal(challenge)}
+                  >
                     Submitted
                   </button>
                 );
@@ -106,15 +125,33 @@ class UserPage extends Component {
       ? this.props.store.user.username.toUpperCase()
       : 'ANON';
 
+    let starterUser = <div></div>;
+    let showStarter = false;
+
+    if (this.props.user.team === null) {
+      starterUser = (
+        <div style={{ textAlign: 'center' }}>
+          <h3>NO TEAM YET</h3>
+          <p>Hang tight, we will hook it up!</p>
+        </div>
+      );
+      showStarter = true;
+    } else if (this.props.store.teamChallengesReducer.length === 0) {
+      starterUser = (
+        <div>
+          <div style={{ margin: '0 auto', textAlign: 'center' }}>
+            <div className="spinner-border text-dark"></div>
+            <h6>Loading</h6>
+          </div>
+        </div>
+      );
+      showStarter = true;
+    }
+
     return (
       <div>
-        {this.props.store.teamChallengesReducer.length === 0 ? (
-          <div>
-            <div style={{ margin: '0 auto', textAlign: 'center' }}>
-              <div className="spinner-border text-dark"></div>
-              <h6>Loading</h6>
-            </div>
-          </div>
+        {showStarter ? (
+          <div>{starterUser}</div>
         ) : (
           <div>
             <h1 id="welcome">Welcome, {name}!</h1>
@@ -136,7 +173,11 @@ class UserPage extends Component {
                 closeModal={this.closeModal}
                 challenge={this.state.currentChallenge}
               />
-              <SubmittedImageModal />
+              <PendingModal
+                show={this.state.showSubmittedModal}
+                closeModal={this.closeSubmittedModal}
+                challenge={this.state.currentChallenge}
+              />
             </div>
           </div>
         )}
