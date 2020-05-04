@@ -73,7 +73,12 @@ class UserPage extends Component {
                 break;
               case 'declined':
                 button = (
-                  <button className="btn btn-danger btn-sm">Rejected</button>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={this.toggleModal(true, item)}
+                  >
+                    Rejected
+                  </button>
                 );
                 break;
               default:
