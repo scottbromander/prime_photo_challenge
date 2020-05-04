@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import imageSaga from './image.saga';
 import challengesSaga from './challenges.saga';
 import submissionSaga from './submission.saga';
+import leaderboardSaga from './leaderboard.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     imageSaga(),
     challengesSaga(),
     submissionSaga(),
+    leaderboardSaga(),
   ]);
 }
