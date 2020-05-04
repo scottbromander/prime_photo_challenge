@@ -20,7 +20,6 @@ class AdminPage extends Component {
   }
 
   selectSubmission = (submission) => (event) => {
-    console.log('submission');
     this.setState({
       item: submission,
       show: true,

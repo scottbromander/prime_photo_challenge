@@ -66,7 +66,7 @@ class SubmittedImageModal extends Component {
         <Modal.Footer>
           {this.state.confirmDelete ? (
             <div style={{ margin: '0 auto', textAlign: 'center' }}>
-              <span class="h5">
+              <span className="h5">
                 ARE YOU SURE YOU WANT TO DECLINE THIS IMAGE?
               </span>
               <div style={{ textAlign: 'center', marginTop: '10px' }}>
