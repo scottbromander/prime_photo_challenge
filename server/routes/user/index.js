@@ -14,13 +14,13 @@ module.exports = (params) => {
   });
 
   router.post('/register', (req, res, next) => {
-    const username = req.body.username;
+    const { username, email } = req.body;
     const password = encryptLib.encryptPassword(req.body.password);
 
     const queryText =
-      'INSERT INTO "user" (username, password) VALUES ($1, $2) RETURNING id';
+      'INSERT INTO "user" (username, password, email) VALUES ($1, $2, $3) RETURNING id';
     pool
-      .query(queryText, [username, password])
+      .query(queryText, [username, password, email])
       .then(() => res.sendStatus(201))
       .catch(() => res.sendStatus(500));
   });

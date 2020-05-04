@@ -33,11 +33,11 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        {this.props.store.errors.loginMessage && (
+        {/* {this.props.store.errors.loginMessage && (
           <h2 className="alert" role="alert">
             {this.props.store.errors.loginMessage}
           </h2>
-        )}
+        )} */}
         <form
           className="form-group"
           onSubmit={this.login}
@@ -79,6 +79,7 @@ class LoginPage extends Component {
           </div>
         </form>
         <center>
+          <p>No account?</p>
           <button
             type="button"
             className="link-button"
