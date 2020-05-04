@@ -4,6 +4,7 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ImageUploadModal from '../../Modals/ImageUploadModal/ImageUploadModal';
 import toastr from 'toastr';
 import CreateTeam from '../../Subcomponents/CreateTeam';
+import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
 
 toastr.options = {
   closeButton: true,
@@ -107,29 +108,38 @@ class UserPage extends Component {
 
     return (
       <div>
-        <h1 id="welcome">Welcome, {name}!</h1>
-        {!this.props.user.team && <CreateTeam />}
+        {this.props.store.teamChallengesReducer.length === 0 ? (
+          <div>
+            <div style={{ margin: '0 auto', textAlign: 'center' }}>
+              <div className="spinner-border text-dark"></div>
+              <h6>Loading</h6>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <h1 id="welcome">Welcome, {name}!</h1>
+            {!this.props.user.team && <CreateTeam />}
 
-        <div className="card">
-          <table className="table table-striped ">
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">Challenge</th>
-                <th scope="col">Submit</th>
-              </tr>
-            </thead>
-            <tbody>{challengeArray}</tbody>
-          </table>
-          <ImageUploadModal
-            show={this.state.showModal}
-            toggleModal={this.toggleModal}
-            closeModal={this.closeModal}
-            challenge={this.state.currentChallenge}
-          />
-          {/* <SubmittedImageModal
-            submission={this.state}
-          /> */}
-        </div>
+            <div className="card">
+              <table className="table table-striped ">
+                <thead className="thead-dark">
+                  <tr>
+                    <th scope="col">Challenge</th>
+                    <th scope="col">Submit</th>
+                  </tr>
+                </thead>
+                <tbody>{challengeArray}</tbody>
+              </table>
+              <ImageUploadModal
+                show={this.state.showModal}
+                toggleModal={this.toggleModal}
+                closeModal={this.closeModal}
+                challenge={this.state.currentChallenge}
+              />
+              <SubmittedImageModal />
+            </div>
+          </div>
+        )}
       </div>
     );
   }

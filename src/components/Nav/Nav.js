@@ -25,7 +25,7 @@ const Nav = (props) => {
         }}
       >
         <h2 className="nav-title">
-          <i class="fas fa-camera-retro"></i> PRIME PHOTO CHALLENGE
+          <i className="fas fa-camera-retro"></i> PRIME PHOTO CHALLENGE
         </h2>
       </div>
       {props.user && props.user.id && (
