@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import toastr from 'toastr';
 
 class RegisterPage extends Component {
   state = {
@@ -33,13 +34,20 @@ class RegisterPage extends Component {
   };
 
   render() {
+    if (this.props.store.errors.registrationMessage === 'REGISTRATION_FAILED') {
+      toastr['error']('Registration Failed');
+      this.props.dispatch({ type: 'CLEAR_REGISTRATION_ERROR' });
+    }
+
+    if (
+      this.props.store.errors.registrationMessage === 'REGISTRATION_INPUT_ERROR'
+    ) {
+      toastr['error']('Input Missing');
+      this.props.dispatch({ type: 'CLEAR_REGISTRATION_ERROR' });
+    }
+
     return (
       <div>
-        {this.props.errors.registrationMessage && (
-          <h2 className="alert" role="alert">
-            {this.props.errors.registrationMessage}
-          </h2>
-        )}
         <form
           className="form-group"
           onSubmit={this.registerUser}
