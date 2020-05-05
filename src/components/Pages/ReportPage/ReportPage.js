@@ -14,7 +14,7 @@ class ReportPage extends Component {
       (item, index) => {
         return (
           <tr key={index}>
-            <th scope="row">{item.team_id}</th>
+            <th scope="row">{index + 1}</th>
             <td className="lead">{item.name}</td>
             <td className="lead" style={{ textAlign: 'center' }}>
               {item.score}
@@ -27,24 +27,42 @@ class ReportPage extends Component {
     return (
       <div>
         <div>
-          <p>Da report Page</p>
+          <div style={{ textAlign: 'center' }}>
+            <h2>Results</h2>
+            <hr />
+          </div>
 
-          <table className="table table-striped">
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Team</th>
-                <th scope="col" style={{ textAlign: 'center' }}>
-                  Points
-                </th>
-              </tr>
-            </thead>
-            <tbody>{leaderboardArray}</tbody>
-          </table>
+          {leaderboardArray.length > 0 ? (
+            <div>
+              <h4>Leaderboard</h4>
+              <table className="table table-striped">
+                <thead className="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Team</th>
+                    <th scope="col" style={{ textAlign: 'center' }}>
+                      Points
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>{leaderboardArray}</tbody>
+              </table>
 
-          <MasonryGallery
-            elements={this.props.store.allApprovedSubmissionReducer}
-          />
+              <hr />
+
+              <h4>Gallery</h4>
+              <div style={{ padding: '0 16px' }}>
+                <MasonryGallery
+                  elements={this.props.store.allApprovedSubmissionReducer}
+                />
+              </div>
+            </div>
+          ) : (
+            <div style={{ textAlign: 'center' }}>
+              <h3>Nothing to report yet!</h3>
+              <p>No approved submissions</p>
+            </div>
+          )}
         </div>
       </div>
     );
