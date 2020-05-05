@@ -129,7 +129,8 @@ class UserPage extends Component {
     if (this.props.user.team === null) {
       starterUser = (
         <div style={{ textAlign: 'center' }}>
-          <h3>NO TEAM YET</h3>
+          <h3>No Team Yet</h3>
+          <hr />
           <p>Hang tight, we will hook it up!</p>
         </div>
       );
@@ -154,7 +155,7 @@ class UserPage extends Component {
         ) : (
           <div>
             <div style={{ textAlign: 'center' }}>
-              <h1 id="welcome">Welcome, {name}!</h1>
+              <h3 id="welcome">Welcome, {name}!</h3>
             </div>
 
             <hr />
