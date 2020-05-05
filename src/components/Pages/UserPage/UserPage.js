@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ImageUploadModal from '../../Modals/ImageUploadModal/ImageUploadModal';
 import toastr from 'toastr';
-import CreateTeam from '../../Subcomponents/CreateTeam';
-import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
 import PendingModal from '../../Modals/PendingModal/PendingModal';
 
 toastr.options = {
@@ -155,8 +153,11 @@ class UserPage extends Component {
           <div>{starterUser}</div>
         ) : (
           <div>
-            <h1 id="welcome">Welcome, {name}!</h1>
-            {!this.props.user.team && <CreateTeam />}
+            <div style={{ textAlign: 'center' }}>
+              <h1 id="welcome">Welcome, {name}!</h1>
+            </div>
+
+            <hr />
 
             <div className="card">
               <table className="table table-striped ">
