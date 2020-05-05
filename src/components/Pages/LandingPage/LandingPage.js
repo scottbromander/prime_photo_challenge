@@ -20,7 +20,11 @@ class LandingPage extends Component {
           <div className="grid-col grid-col_12" style={{ textAlign: 'center' }}>
             <h3>Welcome to the Prime Photo Challenge</h3>
             <p>Click below to get started!</p>
-            <button className="btn btn-primary btn-lg" onClick={this.onLogin}>
+            <button
+              className="btn btn-primary "
+              style={{ width: '200px' }}
+              onClick={this.onLogin}
+            >
               Get Started
             </button>
           </div>
