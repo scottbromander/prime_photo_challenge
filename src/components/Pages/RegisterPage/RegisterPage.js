@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import toastr from 'toastr';
 
 class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    email: '',
   };
 
   registerUser = (event) => {
@@ -17,6 +19,7 @@ class RegisterPage extends Component {
         payload: {
           username: this.state.username,
           password: this.state.password,
+          email: this.state.email,
         },
       });
     } else {
@@ -31,13 +34,20 @@ class RegisterPage extends Component {
   };
 
   render() {
+    if (this.props.store.errors.registrationMessage === 'REGISTRATION_FAILED') {
+      toastr['error']('Registration Failed');
+      this.props.dispatch({ type: 'CLEAR_REGISTRATION_ERROR' });
+    }
+
+    if (
+      this.props.store.errors.registrationMessage === 'REGISTRATION_INPUT_ERROR'
+    ) {
+      toastr['error']('Input Missing');
+      this.props.dispatch({ type: 'CLEAR_REGISTRATION_ERROR' });
+    }
+
     return (
       <div>
-        {this.props.errors.registrationMessage && (
-          <h2 className="alert" role="alert">
-            {this.props.errors.registrationMessage}
-          </h2>
-        )}
         <form
           className="form-group"
           onSubmit={this.registerUser}
@@ -64,6 +74,18 @@ class RegisterPage extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+                className="form-control"
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="email">
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChangeFor('email')}
                 className="form-control"
               />
             </label>

@@ -62,13 +62,18 @@ class AdminPage extends Component {
 
     return (
       <div>
-        <p>ADMIN PAGE</p>
+        <div style={{ textAlign: 'center' }}>
+          <h3>Approval Page</h3>
+        </div>
+        <hr />
         {submissionArray.length === 0 && (
           <div style={{ textAlign: 'center' }}>
             <h1>All caught up!</h1>
           </div>
         )}
-        <div>{submissionArray}</div>
+        <div style={{ textAlign: 'center' }}>
+          <div>{submissionArray}</div>
+        </div>
         <SubmittedImageModal
           show={this.state.show}
           item={this.state.item}

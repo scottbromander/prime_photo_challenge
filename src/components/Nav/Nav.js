@@ -44,8 +44,16 @@ const Nav = (props) => {
             <Link className="nav-link" to="/report">
               Report
             </Link>
+            {props.store.user.role === 'user' && (
+              <>
+                <Link className="nav-link" to="/about">
+                  Rules
+                </Link>
+              </>
+            )}
             <Link
               className="nav-link"
+              to="/"
               onClick={() => props.dispatch({ type: 'LOGOUT' })}
             >
               Log Out

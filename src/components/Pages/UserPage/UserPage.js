@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ImageUploadModal from '../../Modals/ImageUploadModal/ImageUploadModal';
 import toastr from 'toastr';
-import CreateTeam from '../../Subcomponents/CreateTeam';
-import SubmittedImageModal from '../../Modals/SubmittedImageModal/SubmittedImageModal';
 import PendingModal from '../../Modals/PendingModal/PendingModal';
 
 toastr.options = {
@@ -131,7 +129,8 @@ class UserPage extends Component {
     if (this.props.user.team === null) {
       starterUser = (
         <div style={{ textAlign: 'center' }}>
-          <h3>NO TEAM YET</h3>
+          <h3>No Team Yet</h3>
+          <hr />
           <p>Hang tight, we will hook it up!</p>
         </div>
       );
@@ -155,8 +154,11 @@ class UserPage extends Component {
           <div>{starterUser}</div>
         ) : (
           <div>
-            <h1 id="welcome">Welcome, {name}!</h1>
-            {!this.props.user.team && <CreateTeam />}
+            <div style={{ textAlign: 'center' }}>
+              <h3 id="welcome">Welcome, {name}!</h3>
+            </div>
+
+            <hr />
 
             <div className="card">
               <table className="table table-striped ">
