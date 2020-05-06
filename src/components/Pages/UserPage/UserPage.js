@@ -136,17 +136,8 @@ class UserPage extends Component {
       );
       showStarter = true;
     }
-    // else if (this.props.store.teamChallengesReducer.length === 0) {
-    //   starterUser = (
-    //     <div>
-    //       <div style={{ margin: '0 auto', textAlign: 'center' }}>
-    //         <div className="spinner-border text-dark"></div>
-    //         <h6>Loading</h6>
-    //       </div>
-    //     </div>
-    //   );
-    //   showStarter = true;
-    // }
+
+    console.log(this.props.store.user);
 
     return (
       <div>
@@ -156,6 +147,8 @@ class UserPage extends Component {
           <div>
             <div style={{ textAlign: 'center' }}>
               <h3 id="welcome">Welcome, {name}!</h3>
+              {/* TODO: Implement team name on User Page */}
+              {/* <h5>Team: {this.props.store.user.username}</h5> */}
             </div>
 
             <hr />
