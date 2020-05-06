@@ -137,7 +137,7 @@ class UserPage extends Component {
       showStarter = true;
     }
 
-    console.log(this.props.store.user);
+    // console.log(this.props.store.user);
 
     return (
       <div>
