@@ -79,16 +79,6 @@ class UserPage extends Component {
                   <button className="btn btn-success btn-sm">Accepted!</button>
                 );
                 break;
-              case 'declined':
-                button = (
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={this.toggleModal(true, item)}
-                  >
-                    Rejected
-                  </button>
-                );
-                break;
               case 'pending':
                 button = (
                   <button
@@ -96,6 +86,16 @@ class UserPage extends Component {
                     onClick={this.showSubmitModal(challenge)}
                   >
                     Submitted
+                  </button>
+                );
+                break;
+              case 'declined':
+                button = (
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={this.toggleModal(true, item)}
+                  >
+                    Rejected
                   </button>
                 );
                 break;

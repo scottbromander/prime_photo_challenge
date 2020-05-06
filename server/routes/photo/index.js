@@ -7,6 +7,7 @@ module.exports = (params) => {
     const queryString = `SELECT
       "submission"."challenge_id",
       "submission"."image_url",
+      "status"."id",
       "status"."status_name",
       "user"."username",
       "challenge"."description"
@@ -14,7 +15,8 @@ module.exports = (params) => {
       JOIN "status" ON "submission"."status"="status"."id"
       JOIN "user" ON "submission"."user"="user"."id"
       JOIN "challenge" ON "submission"."challenge_id"="challenge"."id"
-      WHERE "team_id"=$1;`;
+      WHERE "team_id"=$1
+      ORDER BY "status"."id" DESC;`;
 
     pool
       .query(queryString, [req.user.team])
