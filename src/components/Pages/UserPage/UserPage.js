@@ -74,16 +74,6 @@ class UserPage extends Component {
         for (let challenge of this.props.store.teamChallengesReducer) {
           if (challenge.challenge_id === item.id) {
             switch (challenge['status_name']) {
-              case 'pending':
-                button = (
-                  <button
-                    className="btn btn-warning btn-sm"
-                    onClick={this.showSubmitModal(challenge)}
-                  >
-                    Submitted
-                  </button>
-                );
-                break;
               case 'approved':
                 button = (
                   <button className="btn btn-success btn-sm">Accepted!</button>
@@ -96,6 +86,16 @@ class UserPage extends Component {
                     onClick={this.toggleModal(true, item)}
                   >
                     Rejected
+                  </button>
+                );
+                break;
+              case 'pending':
+                button = (
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={this.showSubmitModal(challenge)}
+                  >
+                    Submitted
                   </button>
                 );
                 break;
