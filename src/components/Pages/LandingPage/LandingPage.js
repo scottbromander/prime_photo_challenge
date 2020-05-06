@@ -18,6 +18,10 @@ class LandingPage extends Component {
       <div className="container">
         <div className="grid">
           <div className="grid-col grid-col_12" style={{ textAlign: 'center' }}>
+            <i
+              className="fas fa-camera-retro"
+              style={{ fontSize: '120px', marginBottom: '30px' }}
+            ></i>
             <h3>Welcome to the Prime Photo Challenge</h3>
             <p>Click below to get started!</p>
             <button
