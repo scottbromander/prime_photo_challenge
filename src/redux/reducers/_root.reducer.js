@@ -8,6 +8,7 @@ import {
   allApprovedSubmissionReducer,
 } from './submission.reducer';
 import { leaderboardReducer } from './leaderboard.reducer';
+import { resetReducer } from './reset.reducer';
 
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   submissionReducer,
   allApprovedSubmissionReducer,
   leaderboardReducer,
+  resetReducer,
 });
 
 export default rootReducer;

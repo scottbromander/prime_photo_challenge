@@ -68,16 +68,30 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-                className="form-control"
-              />
-            </label>
+            <div>
+              <label htmlFor="password">
+                Password:
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                  className="form-control"
+                  style={{ marginBottom: '0px', paddingBottom: '0px' }}
+                />
+              </label>
+            </div>
+            <div>
+              <p
+                style={{ fontSize: '10px' }}
+                onClick={(event) => {
+                  event.preventDefault();
+                  this.props.dispatch({ type: 'SET_TO_FORGOT_MODE' });
+                }}
+              >
+                I forgot my password
+              </p>
+            </div>
           </div>
           <div>
             <input
@@ -90,16 +104,18 @@ class LoginPage extends Component {
           </div>
         </form>
         <center>
-          <p>No account?</p>
-          <button
-            type="button"
-            className="link-button"
-            onClick={() => {
-              this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
-            }}
-          >
-            Register
-          </button>
+          <div>
+            <p>No account?</p>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => {
+                this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
+              }}
+            >
+              Register
+            </button>
+          </div>
         </center>
       </div>
     );
