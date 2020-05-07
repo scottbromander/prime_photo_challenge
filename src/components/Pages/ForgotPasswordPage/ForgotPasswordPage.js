@@ -25,12 +25,11 @@ class ForgotPasswordPage extends Component {
     return (
       <div>
         {this.state.forgotSent ? (
-          <div>
+          <div style={{ textAlign: 'center' }}>
             <h3>An email is on the way!</h3>
-            <p>
-              An email was sent to your account, you will get directions on what
-              to do from there.
-            </p>
+            <hr />
+            <p>An email was sent to your account.</p>
+            <p>You will get directions on what to do from there.</p>
           </div>
         ) : (
           <div>
