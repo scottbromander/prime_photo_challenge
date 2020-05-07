@@ -15,8 +15,6 @@ module.exports = async (res, email) => {
   const findUserQueryString = `SELECT * FROM "user" WHERE "email"=$1;`;
   const passwordResetQueryString = `INSERT INTO "password_reset" ("hex", "user") VALUES ($1,$2);`;
 
-  console.log(process.env.NODEMAILER_USERNAME, process.env.NODEMAILER_PASSWORD);
-
   try {
     const response = await pool.query(findUserQueryString, [email]);
     if (response.rows == 0) res.send(200);
@@ -43,7 +41,7 @@ module.exports = async (res, email) => {
     });
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
+    console.warn(error);
     res.sendStatus(500);
   }
 };

@@ -64,7 +64,7 @@ module.exports = (params) => {
               res.sendStatus(200);
             })
             .catch((err) => {
-              console.log(`Error saving new password: ${err}`);
+              console.warn(`Error saving new password: ${err}`);
               res.sendStatus(500);
             });
         } else {
@@ -72,7 +72,7 @@ module.exports = (params) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.warn(err);
         res.sendStatus(500);
       });
   });
