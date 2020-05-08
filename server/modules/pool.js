@@ -39,8 +39,8 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
-pool.on('connect', (pool) => {
-  console.log(`Connected: ${pool}`);
-});
+// pool.on('connect', (pool) => {
+//   console.log(`Connected: ${pool}`);
+// });
 
 module.exports = pool;
