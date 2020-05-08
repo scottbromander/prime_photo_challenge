@@ -9,8 +9,9 @@ module.exports = client;
 
 function createHex(user, hex) {
   client
-    .hmset('reset', { [user]: hex })
+    .hmset(user, { ['hex']: hex })
     .then((result) => {
+      client.expire(user, 60 * 5);
       console.log(result);
     })
     .catch((err) => console.warn(err));
@@ -35,7 +36,7 @@ function findAndDeleteKey(user, hex) {
     .catch((err) => console.warn(err));
 }
 
-// createHex('scottbromander', '1ac3g6');
+createHex('scottbromander@gmail.com', '1ac3g6');
 // // createHex('scottbromander', '1ac3g7');
 // createHex('scottbromander', '1ac3g8');
 // createHex('scottbromander', '1ac3g9');
