@@ -29,6 +29,8 @@ import './bootstrap.min.css';
 import './toastr.min.css';
 import './App.css';
 import ReportPage from '../Pages/ReportPage/ReportPage';
+import ForgotPasswordPage from '../Pages/ForgotPasswordPage/ForgotPasswordPage';
+import ResetPasswordPage from '../Pages/ResetPasswordPage/ResetPasswordPage';
 
 class App extends Component {
   componentDidMount() {
@@ -48,6 +50,13 @@ class App extends Component {
             This is a route anyone can see, no login necessary */}
 
               <Route exact path="/home" component={LandingPage} />
+              <Route exact path="/about" component={AboutPage} />
+              <Route exact path="/forgot" component={ForgotPasswordPage} />
+              <Route
+                exact
+                path="/forgot/:hex/:user"
+                component={ResetPasswordPage}
+              />
               {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

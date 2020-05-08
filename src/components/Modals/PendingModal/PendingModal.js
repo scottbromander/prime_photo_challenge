@@ -40,8 +40,6 @@ class PendingModal extends Component {
   };
 
   render() {
-    console.log(this.props.challenge);
-
     return (
       <Modal
         show={this.props.show}

@@ -1,52 +1,68 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+import MasonryGallery from '../../Subcomponents/ImageGallery';
 
 class ReportPage extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_ALL_APPROVED_SUBMISSIONS' });
+    this.props.dispatch({ type: 'FETCH_LEADERBOARD' });
+  }
+
   render() {
+    const leaderboardArray = this.props.store.leaderboardReducer.map(
+      (item, index) => {
+        return (
+          <tr key={index}>
+            <th scope="row">{index + 1}</th>
+            <td className="lead">{item.name}</td>
+            <td className="lead" style={{ textAlign: 'center' }}>
+              {item.score}
+            </td>
+          </tr>
+        );
+      }
+    );
+
     return (
       <div>
         <div>
-          <p>Da report Page</p>
+          <div style={{ textAlign: 'center' }}>
+            <h2>Results</h2>
+            <hr />
+          </div>
 
-          <table className="table table-striped">
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Team</th>
-                <th scope="col" style={{ textAlign: 'center' }}>
-                  Points
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Awesomeness</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Whatever</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>SQUIRREL!</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Go, Fight, Win</td>
-                <td>12</td>
-              </tr>
-            </tbody>
-          </table>
+          {leaderboardArray.length > 0 ? (
+            <div>
+              <h4>Leaderboard</h4>
+              <table className="table table-striped">
+                <thead className="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Team</th>
+                    <th scope="col" style={{ textAlign: 'center' }}>
+                      Points
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>{leaderboardArray}</tbody>
+              </table>
+
+              <hr />
+
+              <h4>Gallery</h4>
+              <div style={{ padding: '0 16px' }}>
+                <MasonryGallery
+                  elements={this.props.store.allApprovedSubmissionReducer}
+                />
+              </div>
+            </div>
+          ) : (
+            <div style={{ textAlign: 'center' }}>
+              <h3>Nothing to report yet!</h3>
+              <p>No approved submissions</p>
+            </div>
+          )}
         </div>
       </div>
     );

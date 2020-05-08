@@ -18,9 +18,18 @@ class LandingPage extends Component {
       <div className="container">
         <div className="grid">
           <div className="grid-col grid-col_12" style={{ textAlign: 'center' }}>
-            <h3>Login to continue</h3>
-            <button className="btn btn_sizeFull" onClick={this.onLogin}>
-              Login
+            <i
+              className="fas fa-camera-retro"
+              style={{ fontSize: '120px', marginBottom: '30px' }}
+            ></i>
+            <h3>Welcome to the Prime Photo Challenge</h3>
+            <p>Click below to get started!</p>
+            <button
+              className="btn btn-primary "
+              style={{ width: '200px' }}
+              onClick={this.onLogin}
+            >
+              Get Started
             </button>
           </div>
         </div>

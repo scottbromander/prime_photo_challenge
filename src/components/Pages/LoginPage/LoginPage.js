@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
+import toastr from 'toastr';
 
 class LoginPage extends Component {
   state = {
@@ -31,13 +32,23 @@ class LoginPage extends Component {
   };
 
   render() {
+    if (this.props.store.errors.loginMessage === 'LOGIN_FAILED') {
+      toastr['error']('Login Incorrect');
+      this.props.dispatch({ type: 'CLEAR_LOGIN_ERROR' });
+    }
+
+    if (this.props.store.errors.loginMessage === 'LOGIN_INPUT_ERROR') {
+      toastr['error']('Missing Inputs');
+      this.props.dispatch({ type: 'CLEAR_LOGIN_ERROR' });
+    }
+
+    if (this.props.store.errors.loginMessage === 'LOGIN_FAILED_NO_CODE') {
+      toastr['error']('Opps! Something is wrong!');
+      this.props.dispatch({ type: 'CLEAR_LOGIN_ERROR' });
+    }
+
     return (
       <div>
-        {this.props.store.errors.loginMessage && (
-          <h2 className="alert" role="alert">
-            {this.props.store.errors.loginMessage}
-          </h2>
-        )}
         <form
           className="form-group"
           onSubmit={this.login}
@@ -57,16 +68,30 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-                className="form-control"
-              />
-            </label>
+            <div>
+              <label htmlFor="password">
+                Password:
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChangeFor('password')}
+                  className="form-control"
+                  style={{ marginBottom: '0px', paddingBottom: '0px' }}
+                />
+              </label>
+            </div>
+            <div>
+              <p
+                style={{ fontSize: '10px' }}
+                onClick={(event) => {
+                  event.preventDefault();
+                  this.props.dispatch({ type: 'SET_TO_FORGOT_MODE' });
+                }}
+              >
+                I forgot my password
+              </p>
+            </div>
           </div>
           <div>
             <input
@@ -79,15 +104,18 @@ class LoginPage extends Component {
           </div>
         </form>
         <center>
-          <button
-            type="button"
-            className="link-button"
-            onClick={() => {
-              this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
-            }}
-          >
-            Register
-          </button>
+          <div>
+            <p>No account?</p>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => {
+                this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
+              }}
+            >
+              Register
+            </button>
+          </div>
         </center>
       </div>
     );
