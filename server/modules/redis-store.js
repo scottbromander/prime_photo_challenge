@@ -5,25 +5,7 @@ client.on('connect', () => {
   console.log(`Redis Connected!`);
 });
 
-// function createHex(hex) {
-//   client.rpush(['hexlist', hex], function (err, reply) {
-//     client.lrange('hexlist', 0, -1, function (err, reply) {
-//       // reply[reply.length - 1].expire()
-//       console.log(reply);
-//     });
-//   });
-// }
-
-// function searchHex(searchHex) {
-//   await client.lrange('hexlist', 0, -1, function (err, hexList) {
-//     for (let singleHex of hexList) {
-//       if (singleHex === searchHex) {
-//         client.LREM();
-//         return true;
-//       }
-//     }
-//   });
-// }
+module.exports = client;
 
 function createHex(user, hex) {
   client
@@ -54,7 +36,7 @@ function findAndDeleteKey(user, hex) {
 }
 
 // createHex('scottbromander', '1ac3g6');
-// createHex('scottbromander', '1ac3g7');
-createHex('scottbromander', '1ac3g8');
-createHex('scottbromander', '1ac3g9');
-findAndDeleteKey('scottbromander', '1ac3g9');
+// // createHex('scottbromander', '1ac3g7');
+// createHex('scottbromander', '1ac3g8');
+// createHex('scottbromander', '1ac3g9');
+// findAndDeleteKey('scottbromander', '1ac3g9');
