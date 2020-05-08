@@ -6,7 +6,7 @@ if (process.env.REDIS_URL) {
   client = redis.createClient(rtg.port, rtg.hostname);
   client.auth(rtg.auth.split(':')[1]);
 } else {
-  redis.createClient();
+  client = redis.createClient();
 }
 
 client.on('connect', () => {
