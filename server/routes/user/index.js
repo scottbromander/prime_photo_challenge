@@ -62,6 +62,7 @@ module.exports = (params) => {
         })
         .catch((err) => res.sendStatus(500));
     } catch (error) {
+      console.log(`ERROR IN SENDING EMAIL: ${error}`);
       res.sendStatus(500);
     }
   });
