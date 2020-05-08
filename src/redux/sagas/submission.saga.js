@@ -23,7 +23,6 @@ function* fetchAllApprovedSubmissions() {
     };
 
     const response = yield axios.get('/api/submissions/approved/all', config);
-    console.log(response.data);
     yield put({ type: 'SET_ALL_APPROVED_SUBMISSIONS', payload: response.data });
   } catch (error) {
     console.error(`Submission approved get request failed ${error}`);

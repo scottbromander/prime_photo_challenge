@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import MasonryGallery from '../../Subcomponents/ImageGallery';
+import ImageGallery from '../../Subcomponents/ImageGallery';
 
 class ReportPage extends Component {
   componentDidMount() {
@@ -52,7 +52,7 @@ class ReportPage extends Component {
 
               <h4>Gallery</h4>
               <div style={{ padding: '0 16px' }}>
-                <MasonryGallery
+                <ImageGallery
                   elements={this.props.store.allApprovedSubmissionReducer}
                 />
               </div>

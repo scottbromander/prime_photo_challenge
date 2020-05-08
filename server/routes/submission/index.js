@@ -112,7 +112,6 @@ module.exports = (params) => {
   });
 
   router.put('/decline/:id', (req, res) => {
-    //UPDATE "songs" SET "rank" = 1 WHERE "track" = 'Wonderwall';
     const queryString = `UPDATE "submission" SET "status"=$1 WHERE "id"=$2;`;
 
     pool
