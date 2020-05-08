@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
 const imageContainerStyle = {
-  padding: '5%',
+  // padding: '1%',
   border: '1px solid rgba(0,0,0,0.2)',
   textAlign: 'center',
+  overflow: 'auto',
+  padding: '0',
 };
 
 const imageStyles = {
