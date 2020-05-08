@@ -29,7 +29,7 @@ module.exports = (params) => {
     const queryText =
       'INSERT INTO "user" (username, password, email) VALUES ($1, $2, $3) RETURNING id';
     pool
-      .query(queryText, [username, password, email])
+      .query(queryText, [username.toLowerCase(), password, email.toLowerCase()])
       .then(() => res.sendStatus(201))
       .catch(() => res.sendStatus(500));
   });
@@ -42,7 +42,9 @@ module.exports = (params) => {
     const findUserQueryString = `SELECT * FROM "user" WHERE "email"=$1;`;
 
     try {
-      const response = await pool.query(findUserQueryString, [req.body.email]);
+      const response = await pool.query(findUserQueryString, [
+        req.body.email.toLowerCase(),
+      ]);
       if (response.rows == 0) res.send(200);
 
       const user = response.rows[0];
