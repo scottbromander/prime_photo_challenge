@@ -16,6 +16,7 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="container">
+        {/* TODO: Switch to bootstrap grid. Basically, 'Pick one' */}
         <div className="grid">
           <div className="grid-col grid-col_12" style={{ textAlign: 'center' }}>
             <i

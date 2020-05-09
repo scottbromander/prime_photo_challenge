@@ -40,6 +40,7 @@ class PendingModal extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <Modal
         show={this.props.show}
@@ -57,10 +58,19 @@ class PendingModal extends Component {
             {this.props.challenge && (
               <img
                 src={this.props.challenge.image_url}
-                alt={'Image of ' + this.props.challenge.description}
+                alt={
+                  this.props.item &&
+                  'Image of ' + this.props.challenge.description
+                }
                 style={{ width: '100%' }}
               />
             )}
+          </div>
+          <hr style={{ margin: '5px 0' }} />
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ margin: '0' }}>
+              {this.props.challenge && this.props.challenge.description}
+            </p>
           </div>
         </Modal.Body>
         <Modal.Footer>

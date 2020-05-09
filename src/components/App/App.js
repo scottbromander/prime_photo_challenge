@@ -8,6 +8,12 @@ import {
 
 import { connect } from 'react-redux';
 
+// import './App.css';
+import 'toastr/build/toastr.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './bootstrap.min.css';
+import './toastr.min.css';
+
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
@@ -15,22 +21,16 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import ROUTE_ENUM from '../../constants/RouteEnum';
 
+import AdminPage from '../Pages/AdminPage/AdminPage';
 import AboutPage from '../Pages/AboutPage/AboutPage';
-import UserPage from '../Pages/UserPage/UserPage';
+import ForgotPasswordPage from '../Pages/ForgotPasswordPage/ForgotPasswordPage';
 import LandingPage from '../Pages/LandingPage/LandingPage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
-
-import 'toastr/build/toastr.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import AdminPage from '../Pages/AdminPage/AdminPage';
-import mapStoreToProps from '../../redux/mapStoreToProps';
-
-import './bootstrap.min.css';
-import './toastr.min.css';
-import './App.css';
 import ReportPage from '../Pages/ReportPage/ReportPage';
-import ForgotPasswordPage from '../Pages/ForgotPasswordPage/ForgotPasswordPage';
+import UserPage from '../Pages/UserPage/UserPage';
+
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class App extends Component {
   componentDidMount() {
