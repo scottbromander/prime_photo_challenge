@@ -8,11 +8,7 @@ class PendingModal extends Component {
     confirmDelete: false,
   };
 
-  approveImage = (event) => {
-    this.props.dispatch({
-      type: 'APPROVE_SUBMISSION',
-      payload: this.props.item,
-    });
+  okModal = (event) => {
     this.props.closeModal();
   };
 
@@ -77,7 +73,7 @@ class PendingModal extends Component {
           <div style={{ margin: '0 auto' }}>
             <Button
               variant="primary"
-              onClick={this.approveImage}
+              onClick={this.okModal}
               style={{ margin: '0 5px' }}
             >
               OK
