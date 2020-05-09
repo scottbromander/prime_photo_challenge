@@ -2,8 +2,38 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import ImageGallery from '../../Subcomponents/ImageGallery';
+import PendingModal from '../../Modals/PendingModal/PendingModal';
 
 class ReportPage extends Component {
+  state = {
+    showModal: false,
+    selectedItem: null,
+  };
+
+  showModal() {
+    this.setState({
+      showModal: true,
+    });
+  }
+
+  closeModal = () => {
+    this.setState({
+      showModal: false,
+    });
+  };
+
+  setItem = (item) => (event) => {
+    console.log('click', item);
+    this.setState(
+      {
+        selectedItem: item,
+      },
+      () => {
+        this.showModal();
+      }
+    );
+  };
+
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ALL_APPROVED_SUBMISSIONS' });
     this.props.dispatch({ type: 'FETCH_LEADERBOARD' });
@@ -54,6 +84,7 @@ class ReportPage extends Component {
               <div style={{ padding: '0 16px' }}>
                 <ImageGallery
                   elements={this.props.store.allApprovedSubmissionReducer}
+                  setItem={this.setItem}
                 />
               </div>
             </div>
@@ -64,6 +95,11 @@ class ReportPage extends Component {
             </div>
           )}
         </div>
+        <PendingModal
+          show={this.state.showModal}
+          closeModal={this.closeModal}
+          challenge={this.state.selectedItem}
+        />
       </div>
     );
   }

@@ -51,7 +51,11 @@ export default class S3Uploader extends Component {
           </div>
         ) : (
           <div style={{ width: '250px', margin: '0 auto' }}>
-            <img src={this.state.imgUrl} style={{ width: '250px' }} />
+            <img
+              src={this.state.imgUrl}
+              style={{ width: '250px' }}
+              alt="Uploaded"
+            />
           </div>
         )}
       </div>
