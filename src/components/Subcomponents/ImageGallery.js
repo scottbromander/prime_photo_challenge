@@ -21,7 +21,11 @@ class ImageGallery extends Component {
           style={imageContainerStyle}
           className="col-md-4 center"
         >
-          <img src={element.image_url} style={imageStyles} />
+          <img
+            src={element.image_url}
+            style={imageStyles}
+            alt={'Photo of ' + element.description}
+          />
         </div>
       );
     });

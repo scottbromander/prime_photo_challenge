@@ -92,11 +92,10 @@ class RegisterPage extends Component {
           </div>
           <div>
             <input
-              className="register"
               type="submit"
               name="submit"
               value="Register"
-              className="btn btn-primary"
+              className="register btn btn-primary"
             />
           </div>
         </form>

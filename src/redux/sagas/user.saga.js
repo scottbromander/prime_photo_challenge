@@ -27,7 +27,7 @@ function* resetPassword(action) {
 
 function* forgotPassword(action) {
   try {
-    const response = yield axios.post('api/user/forgot', action.payload);
+    yield axios.post('api/user/forgot', action.payload);
   } catch (error) {
     console.error(`Post forgot failed: ${error}`);
   }

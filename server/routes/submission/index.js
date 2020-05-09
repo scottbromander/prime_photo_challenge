@@ -32,7 +32,9 @@ module.exports = (params) => {
   });
 
   router.get('/approved/all', (req, res) => {
-    const queryString = `SELECT * FROM "submission" WHERE "submission"."status"=$1;`;
+    const queryString = `SELECT * FROM "submission" 
+    JOIN "challenge" ON "submission"."challenge_id"="challenge"."id"
+    WHERE "submission"."status"=$1;`;
 
     pool
       .query(queryString, [STATUS_ACCEPTED_CODE])

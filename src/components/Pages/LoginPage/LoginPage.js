@@ -95,11 +95,10 @@ class LoginPage extends Component {
           </div>
           <div>
             <input
-              className="log-in"
               type="submit"
               name="submit"
               value="Log In"
-              className="btn btn-primary"
+              className="log-in btn btn-primary"
             />
           </div>
         </form>
