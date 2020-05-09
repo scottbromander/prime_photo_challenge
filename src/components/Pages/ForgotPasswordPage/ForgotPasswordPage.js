@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 import toastr from 'toastr';
-import { eventChannel } from 'redux-saga';
 
 class ForgotPasswordPage extends Component {
   state = {
