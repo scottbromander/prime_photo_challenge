@@ -14,13 +14,18 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './bootstrap.min.css';
 import './toastr.min.css';
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+// SUBCOMPONENTS
+import Nav from '../Subcomponents/Nav/Nav';
+import Footer from '../Subcomponents/Footer/Footer';
+import ProtectedRoute from '../Subcomponents/ProtectedRoute/ProtectedRoute';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+// REDUX HELPERS
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
+// ROUTE ENUMS
 import ROUTE_ENUM from '../../constants/RouteEnum';
 
+// PAGES
 import AdminPage from '../Pages/AdminPage/AdminPage';
 import AboutPage from '../Pages/AboutPage/AboutPage';
 import ForgotPasswordPage from '../Pages/ForgotPasswordPage/ForgotPasswordPage';
@@ -29,8 +34,7 @@ import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
 import ReportPage from '../Pages/ReportPage/ReportPage';
 import UserPage from '../Pages/UserPage/UserPage';
-
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import ResetPasswordPage from '../Pages/ResetPasswordPage/ResetPasswordPage';
 
 class App extends Component {
   componentDidMount() {
@@ -55,8 +59,8 @@ class App extends Component {
               />
               <Route
                 exact
-                path="/forgot/:hex/:user"
-                component={ROUTE_ENUM.PASSWORD_RESET}
+                path={ROUTE_ENUM.PASSWORD_RESET}
+                component={ResetPasswordPage}
               />
               <ProtectedRoute
                 exact
