@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import S3Uploader from '../../Subcomponents/S3Uploader';
+import S3Uploader from '../../Subcomponents/S3Uploader/S3Uploader';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
 

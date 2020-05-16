@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../../redux/mapStoreToProps';
-import ImageGallery from '../../Subcomponents/ImageGallery';
+import ImageGallery from '../../Subcomponents/ImageGallery/ImageGallery';
 import PendingModal from '../../Modals/PendingModal/PendingModal';
 
 class ReportPage extends Component {
